@@ -1,19 +1,33 @@
 all: program
 
-program: build/main.o build/layout.o build/output.o build/move.o
-	gcc -Wall -Werror build/main.o build/layout.o build/output.o build/move.o -o bin/program
+program: build/main.o build/layout.o build/output.o build/move.o bin
+	gcc -Wall -Werror build/main.o build/layout.o build/output.o build/move.o -lm -o bin/program
 
-build/main.o: src/main.c
+test: build/main_test.o build/layout.o build/move.o bin
+	gcc build/main_test.o build/layout.o build/move.o -lm -o bin/test
+
+build/main.o: src/main.c build
 	gcc -Wall -Werror -c src/main.c -o build/main.o
 
-build/layout.o: src/layout.c
-	gcc -Wall -Werror -c src/layout.c -o build/layout.o
+build/main_test.o: test/main.c
+	gcc -I thirdparty -I src -c test/main.c -o build/main_test.o
 
-build/output.o: src/output.c
-	gcc -Wall -Werror -c src/output.c -o build/output.o
+build/layout.o: src/layout.c
+	gcc -c src/layout.c -o build/layout.o
 
 build/move.o: src/move.c
-	gcc -Wall -Werror -c src/move.c -o build/move.o
+	gcc -c src/move.c -o build/move.o
+
+build/output.o: src/output.c build
+	gcc -Wall -Werror -c src/output.c -o build/output.o
+
+build:
+	mkdir build
+
+bin:
+	mkdir bin
+
+.PHONY: clean
 
 clean:
-	rm -rf build/*.o
+	rm -rf bin build
