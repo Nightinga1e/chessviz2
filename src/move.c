@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 
-
 int PawnMoveWhite (int y, int x, int y1, int x1, char (*A)[10], int hod)
 {
 	if (A[y][x] == 'p')
@@ -25,6 +24,7 @@ int PawnMoveWhite (int y, int x, int y1, int x1, char (*A)[10], int hod)
 	}
 return hod;
 }
+
 
 int PawnMoveBlack (int y, int x, int y1, int x1, char (*A)[10], int hod)
 {
@@ -50,6 +50,7 @@ int PawnMoveBlack (int y, int x, int y1, int x1, char (*A)[10], int hod)
 return hod;
 }
 
+
 int PawnMove (int y, int x, int y1, int x1, char (*A)[10], int hod)
 {
 	
@@ -66,3 +67,4 @@ int PawnMove (int y, int x, int y1, int x1, char (*A)[10], int hod)
 	}
 	return hod;
 }
+
