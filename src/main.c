@@ -2,7 +2,7 @@
 
 int main()
 {	
-	char con;
+  //char con;
 	char A[10][10];
 	layout(A);
 	output(A);
@@ -61,12 +61,13 @@ int main()
 			printf("Wrong move\n");
 		}
 		output(A);
-		printf("\n\nExit? (print 'y')\n");
-		scanf(" %c", &con);
-		if (con == 'y')
-		{
-			return 0;
-		}
+		printf("\n\n");
+		//		printf("\n\nExit? (print 'y')\n");
+		//	scanf(" %c", &con);
+		//	if (con == 'y')
+		//{
+		//	return 0;
+		//}
 	}
 	return 0;
 }
